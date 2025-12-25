@@ -305,7 +305,7 @@ def server(input, output, session):
     @reactive.Effect
     @reactive.event(input.save)
     def _():
-        df = master_data()
+        df = display_df() #This is to save only what is being seen after putting all the filters.
         if not df.empty:
             path = os.path.join(input.download_dir(), f"{input.project_id()}_curated.csv")
             df.to_csv(path, index=False)
